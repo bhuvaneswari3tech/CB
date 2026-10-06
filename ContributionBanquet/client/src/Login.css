@@ -1,0 +1,498 @@
+/* =========================================
+  SPEED MOI
+   LOGIN PAGE
+   Theme: Maroon + Gold + Cream
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.login-page {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #faf7f0;
+
+  color: #3d2530;
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.login-header {
+  height: 76px;
+
+  background: #650d2b;
+
+  border-bottom: 3px solid #d6a83d;
+
+  box-shadow:
+    0 3px 10px rgba(101, 13, 43, 0.18);
+}
+
+.header-inner {
+  height: 100%;
+
+  max-width: 1180px;
+
+  margin: auto;
+
+  padding: 0 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+/* Brand */
+
+.brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.brand-crown {
+  font-size: 23px;
+}
+
+.brand-text h1 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.4px;
+}
+
+.brand-text h1 span {
+  color: #e4bd59;
+
+  font-weight: 700;
+}
+
+.brand-text p {
+  margin: 2px 0 0;
+
+  color: #ead7b2;
+
+  font-size: 11px;
+}
+
+
+/* Step */
+
+.step-badge {
+  padding: 8px 15px;
+
+  background: #fffaf0;
+
+  border: 1px solid #d6a83d;
+
+  border-radius: 20px;
+
+  color: #650d2b;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.login-main {
+  flex: 1;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 55px 20px;
+}
+
+
+/* =========================================
+   LOGIN CARD
+========================================= */
+
+.login-card {
+  position: relative;
+
+  width: 480px;
+
+  background: #ffffff;
+
+  border-radius: 15px;
+
+  border: 1px solid #eadfc9;
+
+  padding: 38px 40px 32px;
+
+  box-shadow:
+    0 10px 30px rgba(92, 52, 33, 0.10);
+
+  overflow: hidden;
+}
+
+
+/* Gold top line */
+
+.card-decoration {
+  position: absolute;
+
+  top: 0;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 80px;
+
+  height: 4px;
+
+  background: #d6a83d;
+
+  border-radius: 0 0 5px 5px;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.welcome-section {
+  text-align: center;
+
+  margin-bottom: 28px;
+}
+
+.welcome-icon {
+  width: 58px;
+
+  height: 58px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #fff8e7;
+
+  border: 1px solid #e4c873;
+
+  border-radius: 50%;
+
+  font-size: 27px;
+}
+
+.welcome-section h2 {
+  margin: 0;
+
+  color: #650d2b;
+
+  font-size: 25px;
+
+  font-weight: 750;
+}
+
+.welcome-section p {
+  margin: 10px auto 0;
+
+  max-width: 390px;
+
+  color: #75656b;
+
+  font-size: 13px;
+
+  line-height: 1.55;
+}
+
+.tamil-description {
+  margin-top: 3px !important;
+
+  color: #806f74 !important;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.login-form {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 19px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #4b2935;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.form-group input {
+  width: 100%;
+
+  height: 46px;
+
+  padding: 0 14px;
+
+  border: 1px solid #dfd2c0;
+
+  border-radius: 8px;
+
+  background: #fffdf9;
+
+  color: #38232c;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.form-group input::placeholder {
+  color: #aaa0a0;
+}
+
+.form-group input:focus {
+  border-color: #9b2345;
+
+  box-shadow:
+    0 0 0 3px rgba(155, 35, 69, 0.09);
+
+  background: #ffffff;
+}
+
+
+/* =========================================
+   CONTINUE BUTTON
+========================================= */
+
+.continue-button {
+  width: 100%;
+
+  height: 47px;
+
+  margin-top: 5px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #650d2b;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+}
+
+.continue-button:hover {
+  background: #7d1739;
+
+  box-shadow:
+    0 5px 14px rgba(101, 13, 43, 0.20);
+
+  transform: translateY(-1px);
+}
+
+.continue-button:active {
+  transform: translateY(0);
+}
+
+.continue-button:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+.arrow {
+  font-size: 18px;
+
+  color: #e3bd58;
+}
+
+
+/* =========================================
+   SPINNER
+========================================= */
+
+.spinner {
+  width: 15px;
+
+  height: 15px;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+
+  border-top-color: #ffffff;
+
+  border-radius: 50%;
+
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   NOTE
+========================================= */
+
+.login-note {
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 24px;
+
+  padding: 13px 14px;
+
+  border-top: 1px solid #e8dfd1;
+
+  background: #fffaf0;
+
+  border-radius: 8px;
+
+  color: #69575d;
+
+  font-size: 11px;
+
+  line-height: 1.45;
+}
+
+.note-icon {
+  font-size: 16px;
+
+  flex-shrink: 0;
+}
+
+.login-note strong {
+  color: #650d2b;
+}
+
+.login-note p {
+  margin: 2px 0 0;
+}
+
+.note-tamil {
+  color: #806f74;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.login-footer {
+  padding: 18px;
+
+  text-align: center;
+
+  border-top: 1px solid #e8dfd1;
+
+  color: #887a7f;
+
+  font-size: 11px;
+
+  background: #faf7f0;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .login-header {
+    height: auto;
+
+    padding: 14px 0;
+  }
+
+  .header-inner {
+    gap: 12px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .step-badge {
+    align-self: flex-start;
+  }
+
+  .login-main {
+    padding: 30px 15px;
+  }
+
+  .login-card {
+    width: 100%;
+
+    padding: 35px 24px 28px;
+  }
+
+  .welcome-section h2 {
+    font-size: 22px;
+  }
+}

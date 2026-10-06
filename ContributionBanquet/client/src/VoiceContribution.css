@@ -1,0 +1,711 @@
+/* =========================================
+  SPEED MOI
+   ADD CONTRIBUTION
+   MAROON + GOLD + CREAM
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.contribution-page {
+  min-height: 100vh;
+
+  background: #faf7f0;
+
+  color: #3d2530;
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.contribution-header {
+  height: 76px;
+
+  background: #650d2b;
+
+  border-bottom: 3px solid #d6a83d;
+
+  box-shadow:
+    0 3px 10px rgba(101, 13, 43, 0.18);
+}
+
+.header-content {
+  height: 100%;
+
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding: 0 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.brand-crown {
+  font-size: 23px;
+}
+
+.brand-name {
+  color: white;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.4px;
+}
+
+.header-actions {
+  display: flex;
+
+  gap: 10px;
+}
+
+.header-actions button {
+  padding: 8px 15px;
+
+  border: 1px solid #d6a83d;
+
+  border-radius: 20px;
+
+  background: transparent;
+
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.header-actions button:hover {
+  background: #7d1739;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.contribution-main {
+  min-height: calc(100vh - 130px);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  padding: 35px 15px 45px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.contribution-card {
+  width: 610px;
+
+  background: #ffffff;
+
+  border: 1px solid #eadfc9;
+
+  border-radius: 15px;
+
+  padding: 28px;
+
+  box-shadow:
+    0 10px 30px rgba(92, 52, 33, 0.10);
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.page-title {
+  text-align: center;
+
+  margin-bottom: 25px;
+}
+
+.page-title h2 {
+  margin: 0;
+
+  color: #650d2b;
+
+  font-size: 24px;
+}
+
+.page-title h2 span {
+  color: #9b6c28;
+
+  font-size: 18px;
+}
+
+.page-title p {
+  margin: 7px auto 0;
+
+  max-width: 470px;
+
+  color: #807276;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   VOICE BOX
+========================================= */
+
+.voice-box {
+  padding: 18px 20px 20px;
+
+  background: #f2e9d9;
+
+  border: 2px dashed #d6a83d;
+
+  border-radius: 13px;
+
+  text-align: center;
+
+  margin-bottom: 28px;
+}
+
+
+/* Language */
+
+.language-row {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 12px;
+}
+
+.language-row label {
+  color: #4c2935;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.language-row select {
+  height: 34px;
+
+  padding: 0 12px;
+
+  border: 1px solid #d6bd79;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  color: #4b2935;
+
+  font-weight: 600;
+
+  outline: none;
+}
+
+
+/* =========================================
+   MICROPHONE
+========================================= */
+
+.mic-button {
+  width: 92px;
+
+  height: 92px;
+
+  border-radius: 50%;
+
+  border: 3px solid #d6a83d;
+
+  background: #650d2b;
+
+  color: white;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 0 auto;
+
+  font-size: 34px;
+
+  box-shadow:
+    0 5px 15px rgba(101, 13, 43, 0.20);
+
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+
+.mic-button:hover {
+  transform: scale(1.05);
+
+  background: #7d1739;
+}
+
+.mic-button.mic-listening {
+  animation: microphonePulse 1.2s infinite;
+
+  background: #8c1239;
+}
+
+@keyframes microphonePulse {
+
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(101, 13, 43, 0.45);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 18px rgba(101, 13, 43, 0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(101, 13, 43, 0);
+  }
+}
+
+
+/* Mic text */
+
+.mic-label {
+  margin-top: 12px;
+
+  color: #650d2b;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   TRANSCRIPT
+========================================= */
+
+.transcript-box {
+  min-height: 45px;
+
+  margin-top: 15px;
+
+  padding: 12px 15px;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #573944;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #eee2ce;
+}
+
+.transcript-box em {
+  color: #8d7d82;
+}
+
+.bill-capture-box {
+  margin-bottom: 26px;
+  padding: 16px;
+  border: 1px solid #ebdcc2;
+  border-radius: 12px;
+  background: #fffaf0;
+}
+
+.bill-capture-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: #4b2935;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.bill-capture-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.camera-button,
+.remove-bill-button {
+  border: none;
+  border-radius: 18px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.camera-button {
+  background: #650d2b;
+  color: white;
+}
+
+.remove-bill-button {
+  background: #f3e3d0;
+  color: #650d2b;
+}
+
+.camera-modal {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f8f2ea;
+  border: 1px solid #e1c999;
+}
+
+.camera-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.camera-panel video {
+  width: 100%;
+  max-height: 300px;
+  border-radius: 10px;
+  background: black;
+  object-fit: cover;
+}
+
+.camera-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.capture-button,
+.cancel-camera-button {
+  border: none;
+  border-radius: 18px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.capture-button {
+  background: #650d2b;
+  color: white;
+}
+
+.cancel-camera-button {
+  background: #f0e5d6;
+  color: #650d2b;
+}
+
+.bill-empty-state {
+  min-height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px dashed #d6a83d;
+  border-radius: 10px;
+  background: white;
+  color: #6d5862;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.bill-preview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ead7b3;
+  background: white;
+}
+
+.bill-preview-card img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f8f3eb;
+}
+
+.bill-preview-card small {
+  color: #5a444d;
+  text-align: center;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.contribution-form {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 19px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #4b2935;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.form-group label span {
+  color: #a80000;
+
+  margin-left: 3px;
+}
+
+.form-group input {
+  width: 100%;
+
+  height: 45px;
+
+  padding: 0 14px;
+
+  border: 1px solid #dfd2c0;
+
+  border-radius: 8px;
+
+  background: #fffdf9;
+
+  color: #39242d;
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: #aaa0a0;
+}
+
+.form-group input:focus {
+  border-color: #9b2345;
+
+  box-shadow:
+    0 0 0 3px rgba(155, 35, 69, 0.09);
+}
+
+
+/* =========================================
+   AMOUNT
+========================================= */
+
+.amount-wrapper {
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  border: 1px solid #dfd2c0;
+
+  border-radius: 8px;
+
+  background: #fffdf9;
+
+  overflow: hidden;
+}
+
+.amount-wrapper > span {
+  padding-left: 14px;
+
+  color: #9b6c28;
+
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+.amount-wrapper input {
+  border: none;
+
+  box-shadow: none;
+
+  background: transparent;
+}
+
+.amount-wrapper:focus-within {
+  border-color: #9b2345;
+
+  box-shadow:
+    0 0 0 3px rgba(155, 35, 69, 0.09);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.form-buttons {
+  display: grid;
+
+  grid-template-columns: 1.4fr 0.8fr;
+
+  gap: 14px;
+
+  margin-top: 23px;
+}
+
+.save-button,
+.clear-button {
+  height: 48px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.save-button {
+  border: none;
+
+  background: #650d2b;
+
+  color: white;
+}
+
+.save-button:hover {
+  background: #7d1739;
+
+  box-shadow:
+    0 5px 14px rgba(101, 13, 43, 0.18);
+}
+
+.save-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+.clear-button {
+  background: white;
+
+  color: #650d2b;
+
+  border: 1px solid #650d2b;
+}
+
+.clear-button:hover {
+  background: #fff7eb;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.contribution-footer {
+  padding: 17px;
+
+  text-align: center;
+
+  border-top: 1px solid #e7ddce;
+
+  background: #faf7f0;
+
+  color: #887a7f;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+  .header-content {
+    padding: 0 15px;
+  }
+
+  .header-actions {
+    display: none;
+  }
+
+  .brand-name {
+    font-size: 17px;
+  }
+
+  .contribution-card {
+    width: 100%;
+
+    padding: 22px 18px;
+  }
+
+  .page-title h2 {
+    font-size: 21px;
+  }
+
+  .language-row {
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+  .form-buttons {
+    grid-template-columns: 1fr;
+  }
+}
