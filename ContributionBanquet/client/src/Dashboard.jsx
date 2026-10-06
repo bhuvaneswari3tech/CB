@@ -244,9 +244,14 @@ function Dashboard() {
                       </div>
 
                       <div className="receipt-function-box">
-                        <div className="receipt-function-title">Wedding Function</div>
+                        <div className="receipt-function-title">Moi Virunthu</div>
                         <div className="receipt-function-detail">{item.name || "Contributor"}</div>
                         <div className="receipt-function-detail">{item.city || "Native Place"}</div>
+                      </div>
+
+                      <div className="receipt-contact-box">
+                        <p>Address: 12, Gandhi Street, Chennai - 600001</p>
+                        <p>Phone: +91 98765 43210</p>
                       </div>
 
                       <div className="receipt-meta">

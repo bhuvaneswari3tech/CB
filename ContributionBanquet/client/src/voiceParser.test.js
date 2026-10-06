@@ -140,4 +140,28 @@ describe("parseVoiceInput", () => {
     expect(result.city).toBe("Salem");
     expect(result.amount).toBe("3500");
   });
+
+  it("keeps single-letter initials at the start of names when spoken", () => {
+    const result = parseVoiceInput("M Selvi native place is Chennai amount is 5000");
+
+    expect(result.name).toBe("M Selvi");
+    expect(result.city).toBe("Chennai");
+    expect(result.amount).toBe("5000");
+  });
+
+  it("recognizes crore amounts even when spoken as one word and in different field order", () => {
+    const result = parseVoiceInput("amount is 1crore name is Santhosh Vijayalakshmi place is Chennai street one");
+
+    expect(result.name).toBe("Santhosh Vijayalakshmi");
+    expect(result.city).toBe("Chennai street one");
+    expect(result.amount).toBe("10000000");
+  });
+
+  it("accepts spoken field order variations with name, place, and amount in any order", () => {
+    const result = parseVoiceInput("name is Santhosh Vijayalakshmi amount is 1 crore place is Chennai");
+
+    expect(result.name).toBe("Santhosh Vijayalakshmi");
+    expect(result.city).toBe("Chennai");
+    expect(result.amount).toBe("10000000");
+  });
 });

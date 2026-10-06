@@ -40,6 +40,8 @@ export const parseVoiceInput = (text) => {
     thousand: 1000,
     lakh: 100000,
     lakhs: 100000,
+    crore: 10000000,
+    crores: 10000000,
   };
 
   const parseWordAmount = (value) => {
@@ -61,6 +63,11 @@ export const parseVoiceInput = (text) => {
 
     const tokens = normalized.split(" ").filter(Boolean);
     for (const token of tokens) {
+      if (/^\d+(?:\.\d+)?$/.test(token)) {
+        current += Number(token);
+        continue;
+      }
+
       if (!(token in numberWords)) {
         continue;
       }
@@ -75,6 +82,9 @@ export const parseVoiceInput = (text) => {
       } else if (token === "lakh" || token === "lakhs") {
         total += current * 100000;
         current = 0;
+      } else if (token === "crore" || token === "crores") {
+        total += current * 10000000;
+        current = 0;
       } else if (amount < 100) {
         current += amount;
       }
@@ -82,6 +92,35 @@ export const parseVoiceInput = (text) => {
 
     total += current;
     return total > 0 ? String(total) : "";
+  };
+
+  const parseAmountValue = (value) => {
+    const raw = String(value || "").trim();
+    if (!raw) return "";
+
+    const normalized = raw
+      .toLowerCase()
+      .replace(/(?:rupees?|rs|₹)/gi, "")
+      .replace(/\bcr\b/gi, " crore ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    const croreMatch = normalized.match(/(\d[\d,]*(?:\.\d+)?)\s*(?:crore|crores|cr)\b/i);
+    if (croreMatch) {
+      return String(Number((croreMatch[1] || "0").replace(/,/g, "")) * 10000000);
+    }
+
+    const lakhMatch = normalized.match(/(\d[\d,]*(?:\.\d+)?)\s*(?:lakh|lakhs|lac|lacs)\b/i);
+    if (lakhMatch) {
+      return String(Number((lakhMatch[1] || "0").replace(/,/g, "")) * 100000);
+    }
+
+    const plainNumeric = normalized.match(/^\d[\d,]*(?:\.\d+)?$/);
+    if (plainNumeric) {
+      return plainNumeric[0].replace(/,/g, "");
+    }
+
+    return parseWordAmount(normalized);
   };
 
   const trimFieldValue = (value) =>
@@ -138,12 +177,30 @@ export const parseVoiceInput = (text) => {
 
   if (!parsed.name) {
     const introductionMatch = cleanText.match(
-      /^(?:i am|i'm|this is|contributor is|donor is|நான்)\s+([\p{L}][\p{L}' -]*?)(?=\s+(?:from|native\s+place|place|city|amount|gift|rupees|rs|₹|சொந்த\s+ஊர்|ஊர்|தொகை|ரூபாய்|பணம்)(?:\s|$)|\s+\d|$)/iu
+      /^(?:i am|i'm|this is|contributor is|donor is|நான்)\s+([A-Za-z]\s*[\p{L}][\p{L}' -]*?)(?=\s+(?:from|native\s+place|place|city|amount|gift|rupees|rs|₹|சொந்த\s+ஊர்|ஊர்|தொகை|ரூபாய்|பணம்)(?:\s|$)|\s+\d|$)/iu
     );
     const prefixMatch = cleanText.match(
-      /^([\p{L}][\p{L}' -]*?)\s+(?:from|native\s+place|place|city|amount|gift|rupees|rs|₹|சொந்த\s+ஊர்|ஊர்|தொகை|ரூபாய்|பணம்)(?:\s|$)/iu
+      /^([A-Za-z]\s*[\p{L}][\p{L}' -]*?)\s+(?:from|native\s+place|place|city|amount|gift|rupees|rs|₹|சொந்த\s+ஊர்|ஊர்|தொகை|ரூபாய்|பணம்)(?:\s|$)/iu
     );
     parsed.name = (introductionMatch?.[1] || prefixMatch?.[1] || "").trim();
+  }
+
+  if (!parsed.name) {
+    const initialNameMatch = cleanText.match(/^([A-Z])\s+([A-Za-z\u0B80-\u0BFF][A-Za-z\u0B80-\u0BFF' -]*?)(?=\s+(?:from|native\s+place|place|city|amount|gift|rupees|rs|₹|சொந்த\s+ஊர்|ஊர்|தொகை|ரூபாய்|பணம்)(?:\s|$)|\s+\d|$)/i);
+    if (initialNameMatch) {
+      const initial = initialNameMatch[1].toUpperCase();
+      const rest = initialNameMatch[2].trim();
+      parsed.name = rest ? `${initial} ${rest}` : initial;
+    }
+  }
+
+  if (!parsed.name) {
+    const tamilInitialNameMatch = cleanText.match(/^([A-Z])\s+([\u0B80-\u0BFF][\u0B80-\u0BFF' -]*?)(?=\s+(?:from|native\s+place|place|city|amount|gift|rupees|rs|₹|சொந்த\s+ஊர்|ஊர்|தொகை|ரூபாய்|பணம்)(?:\s|$)|\s+\d|$)/i);
+    if (tamilInitialNameMatch) {
+      const initial = tamilInitialNameMatch[1].toUpperCase();
+      const rest = tamilInitialNameMatch[2].trim();
+      parsed.name = rest ? `${initial} ${rest}` : initial;
+    }
   }
 
   const cityPatterns = [
@@ -180,10 +237,10 @@ export const parseVoiceInput = (text) => {
         .trim();
 
       const literalAmount = candidate;
-      const numberWordAmount = literalAmount ? parseWordAmount(literalAmount) : "";
+      const parsedAmountValue = literalAmount ? parseAmountValue(literalAmount) : "";
 
-      if (numberWordAmount) {
-        parsed.amount = numberWordAmount;
+      if (parsedAmountValue) {
+        parsed.amount = parsedAmountValue;
       } else if (candidate) {
         const numericValue = candidate.match(/\d[\d,]*(?:\.\d+)?/);
         if (numericValue) {
@@ -249,9 +306,17 @@ export const parseVoiceInput = (text) => {
       .find(({ match }) => match);
 
     if (placeMatch) {
-      parsed.city = placeMatch.match[0].trim();
-      if (!parsed.name) {
-        parsed.name = cleanText.slice(0, placeMatch.match.index).trim();
+      const placeStart = cleanText.toLowerCase().indexOf(placeMatch.place.toLowerCase());
+      const cityCandidate = cleanText
+        .slice(placeStart >= 0 ? placeStart : 0)
+        .split(/\s+(?:amount|gift|rupees|rs|₹|name|my|contributor|பெயர்|தொகை|ரூபாய்|பணம்|from|native\s+place|place|city|சொந்த\s+ஊர்|ஊர்)\b/i)[0]
+        .replace(/\s+\d[\d,]*(?:\.\d+)?$/i, "")
+        .trim();
+
+      parsed.city = cityCandidate || placeMatch.place;
+      const beforePlace = cleanText.slice(0, placeStart >= 0 ? placeStart : cleanText.length).trim();
+      if (!parsed.name || parsed.name.toLowerCase().includes(parsed.city.toLowerCase()) || parsed.name.toLowerCase().includes(placeMatch.place.toLowerCase())) {
+        parsed.name = beforePlace;
       }
     }
   }
